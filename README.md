@@ -1,47 +1,86 @@
 # Finance Dashboard UI
 
-This is my submission for the Frontend Developer Intern assignment. I built a modern, responsive, and visually clean Finance Dashboard that allows users to rapidly track their financial activity and understand their spending habits.
+A modern, responsive finance dashboard built with React, Vite, Tailwind CSS, and Recharts. Designed to showcase clean data visualizations, transaction management, and local persistence for a polished frontend experience.
 
-## Features & Implementation
+## Project Overview
 
-### 1. Dashboard Overview
-- **Summary Metrics**: Displays core indicators including Total Balance, Total Income, and Total Expenses.
-- **Data Visualizations**: Uses `recharts` to render a **Balance Trend** (Area Chart) showing change over time and a **Spending Breakdown** (Pie Chart) categorizing outbound cash flow.
+This dashboard simulates a personal finance management application. It provides:
+- a balance trend area chart,
+- spending breakdown visualization,
+- searchable transaction history,
+- role-based action control,
+- and persistent local data caching.
 
-### 2. Transactions & Data Management
-- **Transaction Ledger**: A fully searchable and filterable list (by Income/Expense) of all financial records.
-- **Export to CSV**: Users can download their currently filtered view of transactions neatly into a CSV file via the UI.
-- **State Management**: Orchestrated using React's **Context API** (`FinanceContext.jsx`) and `useReducer` to safely store, manipulate, and dispatch transactional data globally without prop drilling. 
-- **Data Persistence**: Transactions are stored locally in the browser's `localStorage` so data remains even if the page reloads.
+## Key Features
 
-### 3. Simulated Role-Based Access Control (RBAC)
-- **Viewer Role**: The default state, allowing read-only access to charts, insights, and transactions data.
-- **Admin Role**: Safely toggled via the profile button in the Header. Unlocks the ability to **Add**, **Edit**, and **Delete** transactions directly from the frontend interface.
+### Dashboard & Visualizations
+- **Balance Trend**: Area chart showing balance evolution over time.
+- **Spending Breakdown**: Pie chart that displays expense categories and relative distribution.
+- **Responsive Layout**: Mobile-friendly grid layout with adaptive cards.
 
-### 4. Smart Insights
-- Contains a dedicated analysis view (`Insights.jsx`) parsing the existing transactions list dynamically.
-- Automatically calculates visual highlights such as **Top Expense Category**, overall **Savings Rate**, and actionable textual observations based on positive or negative net balance.
+### Transactions
+- **Search & Filter**: Filter transactions by type and search by description or category.
+- **CRUD Operations**: Add, edit, and delete transactions while in Admin mode.
+- **Export CSV**: Download the displayed transaction set as a CSV report.
 
-### 5. Technical Highlights
-- **Dark Mode**: Fully mapped to CSS variables.
-- **Data Persistence**: We just finished syncing the transactions array natively to `localStorage`.
-- **Mock API Integration**: The `setInterval` effectively acts as a webhook feeding you dynamic data without a backend.
-- **Animations**: Subtle CSS transitions, framer-like fade-ins on the layout, and floating Orbs.
-- **Export CSV**: Fully working custom parser attached to an `<a>` tag in JS.
+### User Experience
+- **Dark Mode Support**: Theme toggling between light and dark modes using CSS variables.
+- **Notifications**: Interactive dropdown notifications for transaction alerts and updates.
+- **Insights**: Derived metrics and category analysis from the current transaction dataset.
+
+## Technical Stack
+
+- **React 19**
+- **Vite**
+- **Tailwind CSS**
+- **Recharts**
+- **date-fns**
+- **Context API + useReducer**
+
+## Architecture
+
+- `src/context/FinanceContext.jsx` manages global app state for transactions, notifications, and user role.
+- `src/components/pages` contains the main page views: `Dashboard`, `Insights`, and `Transactions`.
+- `src/components/layout` contains reusable UI elements such as the `Header` and `Sidebar`.
+- `src/lib/utils.js` contains shared utility functions and formatting helpers.
 
 ## Getting Started
 
-1. **Install Dependencies**
-   ```bash
-   npm install
-   ```
+### Install dependencies
+```bash
+npm install
+```
 
-2. **Run the Development Server**
-   ```bash
-   npm run dev
-   ```
+### Start development server
+```bash
+npm run dev
+```
 
-3. **View Application**
-   Open your browser and navigate to `http://localhost:5173` (or the port specified by Vite in the terminal output).
+### Build for production
+```bash
+npm run build
+```
 
-Thank you for reviewing my project!
+### Run lint checks
+```bash
+npm run lint
+```
+
+## Usage Notes
+
+- The application seeds the dashboard with mock financial data when no existing local data is found.
+- Notifications are simulated and stored locally for demo purposes.
+- The Admin role is toggled from the header and enables editing capabilities.
+
+## Why this project?
+
+This dashboard demonstrates a clear, usable frontend with:
+- data-driven UI,
+- clean component structure,
+- responsive layout,
+- state persistence,
+- and a refined visual design suitable for portfolio presentation.
+
+## Contact
+
+For questions or feedback, refer to the project files and component structure inside the repository.
