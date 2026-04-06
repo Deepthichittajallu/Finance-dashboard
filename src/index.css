@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #eff6ff;
+    --surface: #f7f9ff;
+    --surface2: #eaf2ff;
+    --primary: #7c3aed;
+    --primary-dim: rgba(124, 58, 237, 0.15);
+    --secondary: #38bdf8;
+    --success: #4ade80;
+    --danger: #f87171;
+    --text: #102a43;
+    --text-muted: #475569;
+    --border: #dbeafe;
+  }
+
+  .dark {
+    --background: #0a0a0b;
+    --surface: #18181b;
+    --surface2: #27272a;
+    --primary: #8b5cf6;
+    --primary-dim: rgba(139, 92, 246, 0.2);
+    --secondary: #0ea5e9;
+    --success: #10b981;
+    --danger: #ef4444;
+    --text: #f4f4f5;
+    --text-muted: #a1a1aa;
+    --border: #3f3f46;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--text);
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+}
+
+@layer components {
+  .glass-card {
+    background-color: color-mix(in srgb, var(--surface) 90%, transparent);
+    backdrop-filter: blur(14px);
+    border: 1px solid color-mix(in srgb, var(--border) 90%, transparent);
+    border-radius: 1rem;
+    box-shadow: 0 10px 20px -8px rgba(15, 23, 42, 0.12), 0 4px 6px -4px rgba(15, 23, 42, 0.08);
+    transition: all 0.3s ease;
+  }
+  
+  .dark .glass-card {
+    background-color: color-mix(in srgb, var(--surface2) 50%, transparent);
+    border-color: color-mix(in srgb, var(--border) 50%, transparent);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+@keyframes blob {
+  0% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(50px, -60px) scale(1.1); }
+  66% { transform: translate(-40px, 30px) scale(0.9); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
+.animate-blob {
+  animation: blob 10s infinite alternate ease-in-out;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
